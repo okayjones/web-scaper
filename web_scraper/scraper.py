@@ -17,8 +17,8 @@ def get_citations_needed_report(url):
     citations = soup.find_all('a', text='citation needed')
     entries = []
     for c in citations:
-        entries.append(str(c.find_parents('p')[0].text))
-    result = str('\n'.join(entries)).strip()
+        entries.append(c.find_parents('p')[0].text)
+    result = '\n'.join(entries).strip()
     return result
 
 
