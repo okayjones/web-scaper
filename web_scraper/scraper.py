@@ -17,8 +17,14 @@ def get_citations_needed_report(url):
     citations = soup.find_all('a', text='citation needed')
     entries = []
     for c in citations:
-        entries.append(c.find_parents('p')[0].text)
-    result = '\n'.join(entries).strip()
+        entries.append(c.find_parents('p')[0].text.strip())
+    result = '\n\n'.join(entries)
     return result
 
 
+if __name__ == '__main__':
+    count = get_citations_needed_count('https://en.wikipedia.org/wiki/History_of_Mexico')
+    citations = get_citations_needed_report('https://en.wikipedia.org/wiki/History_of_Mexico')
+
+    print(f"{count} citations needed: \n\n")
+    print(citations)
